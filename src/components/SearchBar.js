@@ -1,44 +1,33 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchAnimeList } from  '../actions';
-import './App.css';
 
 
 
-class SearchBar extends React.Component {
-    state = {term:''};
 
+const SearchBar = (props) => {
+    const [searchTerm,setSearchTerm] = React.useState('');
 
-    onFormSubmit = (event) => {
-        event.preventDefault();
-        this.props.fetchAnimeList(this.state.term)
-        
-    }   
+    const onInputChange = (event) => {
+        setSearchTerm(event.target.value)
+    }
     
-    render (){
-        console.log(console.log(this.props.animeList))
-        return (<div className="ui search">
-                    <form onSubmit={this.onFormSubmit} className="search-bar ui form">              
-                         <div className="field">
-                            <label>Anime</label>
-                            <input 
-                                className="prompt"
-                                type="text" 
-                                value={this.state.term} 
-                                onChange={(e) => this.setState({term: e.target.value})}
-                            />  
-                                             
-                        </div>              
-                    </form>
-               </div>)
-    };
-};
 
-const mapStateToProps = (state) => {
-    console.log(state)
-    return {animeList: state.animeList}
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        props.onSubmit(searchTerm);
+        
+    }
+
+
+    return (
+        <div className="ui search ">
+            <form onSubmit={onFormSubmit} className="ui form">
+                <input type="text" value={searchTerm} onChange={onInputChange}/>
+            </form>
+        </div>
+    )
+
+
 }
 
-export default connect(mapStateToProps,{ fetchAnimeList })(SearchBar);
-
-
+export default SearchBar;
