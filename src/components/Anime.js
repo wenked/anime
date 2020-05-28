@@ -19,21 +19,6 @@ const Anime = (props) => {
     }
 
   
-    const Details = () => {
-        if (ShowDetails === true) {
-            return (
-                <div className="description">
-                    <h5>Score: {props.anime.score}</h5>
-                    <p>Episodes: {props.anime.episodes}</p>
-                    <p>Synopsis: {props.anime.synopsis}<br/></p>
-                    <a href={props.anime.url}>MyAnimeList</a>
-                </div>
-            )
-        }
-    }
-
-    
-    
 
     return (
             <div className="container anime"> 
