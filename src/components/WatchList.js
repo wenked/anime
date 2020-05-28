@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import AnimeContext from '../context/animeContext';
+import AnimeContext from '../context/AnimeContext';
 
 
 const WatchList = (props) => {
@@ -19,6 +19,7 @@ const WatchList = (props) => {
                                             <p>Synopsis: {a.synopsis}<br/></p>
                                             <a href={a.url}>MyAnimeList</a>
                                         </div>
+                                        <button className="ui floated left button" onClick={() => animecontext.removelist(a.title)}>Remove</button>
                                     </div>)
         )
     }

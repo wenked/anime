@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavBar.css'
-import AnimeContext from '../context/animeContext';
+import AnimeContext from '../context/AnimeContext';
 
 
 const NavBar = (props) => {

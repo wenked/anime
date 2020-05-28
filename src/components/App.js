@@ -4,7 +4,7 @@ import axios from 'axios';
 import RenderAnimeList from './RenderAnimeList';
 import NavBar from './NavBar';
 import './App.css'
-import  AnimeContext  from '../context/animeContext';
+import  AnimeContext  from '../context/AnimeContext';
 import WatchList from './WatchList';
 
 const App = () => {
