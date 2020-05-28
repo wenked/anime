@@ -1,20 +1,23 @@
 import React from 'react';
+import './Anime.css';
+import  AnimeContext  from '../context/animeContext';
 
 
 
 const Anime = (props) => {
     const [ShowDetails,setShowDetails] = React.useState(false);
-    
+    const [icon,setIcon] = React.useState(false);
+    const animeContext = React.useContext(AnimeContext);
 
     const onClickButton = () => {
-        setShowDetails(true);
+        const myicon = icon;
+        const mydetails = ShowDetails;
+        setShowDetails(!mydetails);
+        setIcon(!myicon);
+        console.log(animeContext.watchlist)
     }
 
-    const onClickDownButton = () => {
-        setShowDetails(false);
-    }
-
-
+  
     const Details = () => {
         if (ShowDetails === true) {
             return (
@@ -28,29 +31,35 @@ const Anime = (props) => {
         }
     }
 
-    return (
-            <div className="container"> 
-                <div className="image">
-                        <img 
-                            className="ui tiny image" 
-                            alt="anime" 
-                            src={props.anime.image_url} 
-                            key={props.anime.mal_id} 
-                    
-                        />
-                </div>
-                    <div>
-                        <div className="ui divided header"><h4>{props.anime.title}</h4></div>
-                        <div className="ui right floated icon buttons">
-                            <button className="ui icon button " onClick={onClickButton}>
-                                <i className="caret square down outline icon"></i>
-                            </button>
-                            <button className="ui icon button" onClick={onClickDownButton}>
-                                <i className="caret square up outline icon"></i>
-                            </button>
+    const Icons = () => {
+        if( icon === false) {
+            return <i className="angle down icon" onClick={onClickButton}></i>
+        } else {
+            return <i className="angle up icon" onClick={onClickButton}></i>
+        } 
 
+    }
+
+    return (
+            <div className="container anime"> 
+                    <div className="box">
+                        <div className="image">
+                                <img 
+                                    className="ui tiny image" 
+                                    alt="anime" 
+                                    src={props.anime.image_url} 
+                                    key={props.anime.mal_id} 
+                                />
                         </div>
-                        <div className="content">{Details()}</div>
+                            <div>
+                                <div className="ui divided header"><h4>{props.anime.title}</h4></div>
+                                <div>
+                                    {Icons()}
+                                </div>
+                                <div className="content">{Details()}</div>
+                            </div>
+                            <button className="ui button" onClick={() => animeContext.addlist(props.anime)}>Add</button>
+                            <button className="ui button" onClick={() => animeContext.removelist(props.anime.title)}>Remove</button>
                     </div>
             </div>
             )

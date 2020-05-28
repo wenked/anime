@@ -1,0 +1,12 @@
+.anime {
+    border:1px solid grey;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 1px;
+    text-align: left;
+}
+
+
+.box {
+    margin: 3px;
+    padding: 3px;
+}
