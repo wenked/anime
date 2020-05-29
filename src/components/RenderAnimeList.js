@@ -7,7 +7,7 @@ import Anime from './Anime';
 const RenderAnimeList = (props) => {
    const renderList = props.animes.map ( anime => {
        return (<div className="ui items">
-                    <Anime className="item" anime={anime}  />
+                    <Anime value={anime} className="item" anime={anime}  />
                 </div>)
    } )
 
