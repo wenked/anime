@@ -1,4 +1,5 @@
 import React from 'react';
+import { Item,Button} from 'semantic-ui-react'
 import './Anime.css';
 import  AnimeContext  from '../context/AnimeContext';
 
@@ -21,31 +22,29 @@ const Anime = (props) => {
   
 
     return (
-            <div className="container anime"> 
+            <div> 
                     <div className="box">
-                        <div className="image">
-                                <img 
-                                    className="ui tiny image" 
+                                <Item.Image 
+                                    size="tiny"
                                     alt="anime" 
                                     src={props.anime.image_url} 
                                     key={props.anime.mal_id} 
                                 />
-                        </div>
-                            <div>
-                                <div className="ui divided header"><h4>{props.anime.title}</h4></div>
+                            <Item.Content verticalAlign="middle">
+                                <Item.Header><h4>{props.anime.title}</h4></Item.Header>
                                 <div>
                                     <i className={`angle ${UpOrDown} icon`} onClick={onClickButton}></i>
                                 </div>
-                                <div className="content">
-                                    {ShowDetails ? <div className="description">
+                                    {ShowDetails ? <Item.Description className="description">
                                                         <h5>Score: {props.anime.score}</h5>
                                                         <p>Episodes: {props.anime.episodes}</p>
                                                         <p>Synopsis: {props.anime.synopsis}<br/></p>
                                                         <a href={props.anime.url}>MyAnimeList</a>
-                                                    </div>: null}</div>
-                                </div>
-                            <button className="ui button" onClick={() => animeContext.addlist(props.anime)}>Add</button>
-                            
+                                                    </Item.Description>: null}
+                                <Item.Extra>
+                                    <Button floated="left" onClick={() => animeContext.addlist(props.anime)}>Add</Button>
+                                </Item.Extra>
+                            </Item.Content>
                     </div>
             </div>
             )

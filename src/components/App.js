@@ -50,9 +50,10 @@ const App = () => {
             <AnimeContext.Provider value={{watchlist: watch, addlist: addList, removelist: removeList, showmylist: showMyList}}>
                 <div className="App">
                         <NavBar />
-                        <SearchBar onSubmit={onFormSubmit} className="ui search searchbar"/>
+                        
                    { !showWatchList ? 
                     <div className="animebox">
+                        <SearchBar onSubmit={onFormSubmit} className="ui search searchbar"/>    
                         <RenderAnimeList className="ui divided items" animes={AnimeList}/>
                     </div> : <WatchList/> }
                 </div>

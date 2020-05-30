@@ -29,7 +29,7 @@ const WatchList = (props) => {
     const MyWatchList = AnimeFilter.map( a =>  
                                     <div className="ui item anime box" key={a.mal_id}>
                                         <div className="ui image">
-                                            <img src={a.image_url} key={a.mal_id} className="ui tiny image" onClick={() => console.log(AnimeFilter)}/>
+                                            <img src={a.image_url} alt="animes" key={a.mal_id} className="ui tiny image" onClick={() => console.log(AnimeFilter)}/>
                                         </div>
                                         <div className="description">  
                                             <h4>{a.title}</h4>                          
@@ -52,7 +52,7 @@ const WatchList = (props) => {
                     floating
                     labeled
                     button
-                    className="icon dropdownfilter"
+                    className="icon"
                 >
                     <Dropdown.Menu>
                         <Dropdown.Header icon='tags' content='Filter by tag' />
